@@ -1,0 +1,12 @@
+extends layouts/default
+
+block main
+  h1 Okay. We screwed up!
+  br
+  span 500
+
+block content
+  #error-message-box
+  #error-stack-trace
+     pre
+      code!= error
