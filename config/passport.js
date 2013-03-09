@@ -92,7 +92,7 @@ function(accessToken, refreshToken,profile,done) {
 				facebook: profile._json
 			})
 
-			User.save(function(err) {
+			user.save(function(err) {
 				if(err) { console.log(err) }
 				return done(err,user) 
 			})
@@ -104,6 +104,39 @@ function(accessToken, refreshToken,profile,done) {
 	})
 }
 ))
+
+//GitHub strategy 
+//
+
+passport.use(new GitHub strategy({
+	clientID: config.github.clientID,
+	clientSecret: config.github.clientSecret,
+	callbackURL: config.github.callbackURL
+},
+function(accessToken,refreshToken,profile,done) {
+	User.findOne({'github.id':profile.id}, function(err,user) {
+		if(!user) {
+			user = new User({
+				name: profile.displayName,
+				email: profile.emails[0].value,
+				username: profile.username,
+				provider: 'github',
+				github: profile._json
+			})
+
+			user.save(function(err) {
+				if(err) {console.log(err) }
+				return done(err,user)
+			})
+		}
+		else {
+			return done(err,user)
+		}
+	})
+}
+))
+
+
 
 
 
