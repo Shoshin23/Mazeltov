@@ -1,4 +1,4 @@
 Mazeltov
 ========
 
-Mazeltov is blog. Um, and more but that's reserved for later.
+Mazeltov is a blog. Um, and more but that's reserved for later.
