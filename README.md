@@ -1,4 +1,4 @@
 Mazeltov
 ========
 
-Mazeltov is blog that uses Node.js, express and mongoDB. But why Mazeltov?
+Mazeltov is blog. Um, and more but that's reserved for later.
