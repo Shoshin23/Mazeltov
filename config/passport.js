@@ -136,7 +136,36 @@ function(accessToken,refreshToken,profile,done) {
 }
 ))
 
+//Google's strategy!
 
+passport.use(new GoogleStrategy ({
+	consumerKey: config.google.clientID,
+	consumerSecret: config.google.clientSecret,
+	callbackURL: config.google.callbackURL
+},
+	function(accessToken, refreshToken,profile,done) {
+		User.findOne({'google.id':profile.id}, function(err,user) {
+			if(!user) {
+				user = new User ({
+					name: profile.displayName,
+					email:profile.emails[0].value,
+					username: profile.username,
+					provier: 'google',
+					google. provider._json
+				})
+
+				user.save(function(err) {
+					if(err) console.log(err)
+					return done(err,user) 
+				})
+			}
+			else {
+				return done(err,user)
+			}
+		})
+	}
+));
+}
 
 
 
