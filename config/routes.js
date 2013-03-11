@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
 
 module.exports = function(app,passport,auth) {
 	//User routes
-var users = require('../app/controllers/users') //adhering to the MVC model. 
+var users = require('../app/controllers/users') 
 
 app.get('/login',users.login)
 
@@ -38,7 +38,7 @@ app.get('/auth/google/callback',passport.authenticate('google', {failureRedirect
 app.param('userId', users.user)
 
 
-//routes for post
+//routes for Post
 
 var articles = require('../app/controllers/articles')
 app.get('/articles', articles.index)

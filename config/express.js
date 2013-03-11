@@ -27,7 +27,7 @@ app.configure(function() {
 	//dynamic helpers
 	app.use(helpers(config.app.name))
 
-	//cookieParser should be above Sessions
+	//cookieParser above Sessions
 
 	app.use(express.cookieParser())
 	
@@ -52,7 +52,7 @@ app.use(passport.session())
 
 app.use(express.favicon())
 
-//routes should be at the end
+//routes at the end
 
 app.use(app.router)
 
@@ -70,4 +70,4 @@ app.use(function(req,res,next) {
 
 })
 })
-} //this aint closing. check towards debuggin phase.
+} //this aint closing. check towards debugging phase.
