@@ -1,0 +1,26 @@
+
+ header#header
+  .navbar.navbar-fixed-top(role='navigation')
+    .navbar-inner
+      .container
+        a.brand(href='/') Mazeltov Blog
+	.nav-collapse.collapse
+	  ul.nav
+	    li
+	      a(href='/articles', title="All Posts") Posts
+	    li
+	      a(href='/articles/new', title="New Post") New
+	    li
+	      a(href="https://www.github.com/shoshin23/Mazeltov", target='_blank') Contribute
+	    li
+	      a(href="https://www.twitter.com/meTheKarthik", target='_blank') Follow me on Twiter
+          ul.nav.pull-right
+	    if (req.isAuthenticated())
+	      li
+	        a(href="/users"/+req.user.id, title="Profile) Profile
+              li
+	        a(href="/logout", title="Logout") Logout
+	     
+	    else
+	      li
+	        a(href="/login", title="Login") Login
